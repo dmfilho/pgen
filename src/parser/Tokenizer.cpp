@@ -120,7 +120,7 @@ namespace pgen
      */
     void Tokenizer::codeNextToken(stringstream &s) 
     {
-        s << "int next_token(const char* text, int* pos) {"                                                               "\n";
+        s << "int next_token(const char* text, int* pos) {"                                                         "\n";
         for (int i = 0, sz = typeList.size(); i < sz; i++) {
             for (auto kv: typeList) {
                 if (kv.second->typeId == i) {
@@ -144,7 +144,7 @@ namespace pgen
      */
     void Tokenizer::codeNumTokens(stringstream &s) 
     {
-        s << "int " << fnNameNumTokens() << "(const char* text, int len) {"                                               "\n"
+        s << "int " << fnNameNumTokens() << "(const char* text, int len) {"                                         "\n"
              " int pos = 0;"                                                                                        "\n"
              " int p;"                                                                                              "\n"
              " int tok = 0;"                                                                                        "\n"

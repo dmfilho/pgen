@@ -30,6 +30,7 @@
 #include <sstream>
 // pgen
 #include "ICompilable.h"
+#include "../misc/NameIndexer.h"
 
 using namespace std;
 namespace pgen 
@@ -49,14 +50,14 @@ namespace pgen
 	string ICompilable::funcname() 
 	{
 		stringstream s;
-		s << "fn_" << this->name();
+		s << "fn_" << NameIndexer::get(this->name());
 		return s.str();
 	}
 
 	string ICompilable::cfuncname() 
 	{
 		stringstream s;
-		s << "cf_" << this->name();
+		s << "cf_" << NameIndexer::get(this->name());
 		return s.str();
 	}
 

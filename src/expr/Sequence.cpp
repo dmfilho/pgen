@@ -37,6 +37,7 @@
 // pgen
 #include "ICompilable.h"
 #include "Sequence.h"
+#include "../misc/NameIndexer.h"
 
 using namespace std;
 namespace pgen 
@@ -78,8 +79,8 @@ namespace pgen
 	string Sequence::ccompile() 
 	{
 		stringstream s;
-		string name = this->name();
-		s << "chainptr fc" << name << "[] = {" 								"\n";
+		string name = NameIndexer::get(this->name());
+		s << "chainptr rc_" << name << "[] = {" 							"\n";
 		for (unsigned int i=0; i < expr.size(); i++) 
 		{
 			s << " {(int (*)())(" << expr[i]->cfuncname() << ")},"			"\n";
@@ -89,7 +90,7 @@ namespace pgen
 			 "};" 															"\n\n"
 		  << cprototype() << " {" 											"\n"
 			 " fc" << name << "[" << expr.size()+1 << "].subchain = chain;" "\n"
-			 " return next_chain(text, fc" << name << ");"					"\n"
+			 " return next_chain(text, rc_" << name << ");"					"\n"
 			 "}" 															"\n\n";
 		return s.str();
 	}
@@ -113,8 +114,8 @@ namespace pgen
 	string Sequence::compile() 
 	{
 		stringstream s;
-		string name = this->name();
-		s << "chainptr f" << name << "[] = {"									"\n";
+		string name = NameIndexer::get(this->name());
+		s << "chainptr rf_" << name << "[] = {"									"\n";
 		for (unsigned int i=0; i < expr.size()-1; i++) 
 		{
 			s << " {(int (*)())(" << expr[i]->cfuncname() << ")},"				"\n";
@@ -126,7 +127,7 @@ namespace pgen
 		s << " {NULL}" 															"\n"
 			 "};"																"\n\n"
 		  << prototype() << " {"												"\n"
-			 " return chain_next(text, f" << name << ");"						"\n"
+			 " return chain_next(text, rf_" << name << ");"						"\n"
 			 "}"																"\n\n";
 		return s.str();
 	}

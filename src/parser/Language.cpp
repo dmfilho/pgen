@@ -407,7 +407,7 @@ namespace pgen
 			 " pr->ast = " << prefix << "parse(pr->tokens, &i);"											"\n"
 			 " return pr;"																					"\n"
 			 "}"																							"\n\n"
-			 "parse_result* " << prefix << "parse_file(const char* fileName) {"									"\n"
+			 "parse_result* " << prefix << "parse_file(const char* fileName) {"								"\n"
 			 " int i;"																						"\n"
 			 " parse_result* pr = (parse_result*) malloc(sizeof(parse_result));"							"\n"
 			 " memset(pr, 0, sizeof(parse_result));"														"\n"

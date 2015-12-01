@@ -14,6 +14,8 @@
       <File Name="src/misc/Util.h"/>
       <File Name="src/misc/LanguageException.cpp"/>
       <File Name="src/misc/LanguageException.h"/>
+      <File Name="src/misc/NameIndexer.cpp"/>
+      <File Name="src/misc/NameIndexer.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="expr">
       <File Name="src/expr/Alternative.cpp"/>
